@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Watch Movie</title>
+  <link rel="stylesheet" href="Netflix.css" />
+</head>
+<body style="background-color: #000; color: #fff; font-family: Arial, sans-serif;">
+  <a class="back-button" href="index.html">← Back</a>
+
+  <div class="player-container">
+    <h1 id="movie-title">Now Playing</h1>
+    <video id="movie-video" controls autoplay>
+      <source type="video/mp4" />
+      Your browser does not support HTML video.
+    </video>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const title = urlParams.get('title');
+    document.getElementById('movie-title').innerText = title || "Now Playing";
+
+    const sampleVideos = {
+      "Inception": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "The Matrix": "https://www.w3schools.com/html/movie.mp4",
+      "Avengers": "https://www.w3schools.com/html/mov_bbb.mp4"
+    };
+
+    const videoFile = sampleVideos[title] || "https://www.w3schools.com/html/mov_bbb.mp4";
+    const video = document.getElementById('movie-video');
+    video.src = videoFile;
+  </script>
+</body>
+</html>
